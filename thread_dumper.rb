@@ -15,7 +15,8 @@ FileUtils.mkdir_p local_folder
 
 images = page.css('.fileText a')
 images.each do |img|
-	local_fname = "dump/#{subject}/#{img.text}"
+	fnum = img['href'].split('/').last.split('.').first
+	local_fname = "#{DUMP_FOLDER}/#{subject}/#{fnum}_#{img.text}"
 	remote_url = "http:#{img['href']}"
 	unless File.exists? local_fname
 		puts "Fetching #{remote_url}..."
