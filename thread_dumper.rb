@@ -9,7 +9,7 @@ FileUtils.mkdir_p DUMP_FOLDER
 thread_url = ARGV[0]
 page = Nokogiri::HTML(open(thread_url))
 
-subject = page.css('.subject')[0].text
+subject = page.css('.subject')[1].text
 local_folder = "#{DUMP_FOLDER}/#{subject}"
 FileUtils.mkdir_p local_folder
 
