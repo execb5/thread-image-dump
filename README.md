@@ -5,5 +5,6 @@ current working directory.
 
 Usage:
 ```sh
+bundle install
 ruby thread_dumper.rb <THREAD_LINK>
 ```
