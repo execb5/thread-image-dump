@@ -1,0 +1,25 @@
+{
+  "name": "thread-image-dump",
+  "version": "1.0.0",
+  "description": "A simple ruby script to dump all images of a 4chan thread in a new folder on the current working directory.",
+  "main": "thread_dumper.js",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "node-fetch": "^1.6.3",
+    "terminal-kit": "^1.8.12"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/execb5/thread-image-dump.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/execb5/thread-image-dump/issues"
+  },
+  "homepage": "https://github.com/execb5/thread-image-dump#readme"
+}
