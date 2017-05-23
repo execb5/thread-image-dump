@@ -10,20 +10,20 @@ const thread_url = process.argv[2]
 
 let progress = 0
 let progressBar = term.progressBar({
-	title: 'dumping:',
-	eta: true,
-	percent: true
+    title: 'dumping:',
+    eta: true,
+    percent: true
 })
 
 fetch(thread_url)
     .then(response => response.text())
     .then(body => {
         let $ = cheerio.load(body)
-        
+
         let subject = $('.subject')[1].children[0].data.replace(/[^\w\s]/gi, '')
         let dir = DUMP_FOLDER + '/' + subject 
         if (!fs.existsSync(dir)) fs.mkdirSync(dir)
-        
+
         let images = $('.fileText a').toArray()
         images.forEach(img => {
             let href = 'http:' + img.attribs['href']
