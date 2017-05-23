@@ -4,7 +4,6 @@ const fs = require('fs')
 const term = require('terminal-kit').terminal
 
 const DUMP_FOLDER = "dump"
-
 if (!fs.existsSync(DUMP_FOLDER)) fs.mkdirSync(DUMP_FOLDER)
 
 const thread_url = process.argv[2]
@@ -23,7 +22,6 @@ fetch(thread_url)
         
         let subject = $('.subject')[1].children[0].data.replace(/[^\w\s]/gi, '')
         let dir = DUMP_FOLDER + '/' + subject 
-
         if (!fs.existsSync(dir)) fs.mkdirSync(dir)
         
         let images = $('.fileText a').toArray()
@@ -34,16 +32,13 @@ fetch(thread_url)
                 + img.next.data + '.'
                 + file_name.split('.')[1]
             fetch(href)
-                .then(res => new Promise(resolve => {
+                .then(res => {
                     let dest = fs.createWriteStream(
                         './' + dir + '/' + local_name)
                     res.body.pipe(dest).on('finish', () => {
-                        resolve()
+                        progress += (1 / images.length) + 0.01
+                        progressBar.update(progress)
                     })
-                }))
-                .then(() => {
-                    progress += (1 / images.length) + 0.01
-                    progressBar.update(progress)
                 })
         })
     })
